@@ -123,7 +123,7 @@ def create_streamlit_app(llm, portfolio, clean_text):
     st.markdown(
         """
         <div class="footer">
-            Made with ❤️ using Streamlit | Powered by LangChain
+            Made by Anushree Sharma 
         </div>
         """,
         unsafe_allow_html=True,
