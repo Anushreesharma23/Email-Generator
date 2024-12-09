@@ -10,20 +10,17 @@ def create_streamlit_app(llm, portfolio, clean_text):
         layout="wide",
         page_title="Cold Mail Generator",
         page_icon="📧"
-
     )
 
     # Apply custom styles
     st.markdown(
         """
         <style>
-        /* General Styling */
         body {
             font-family: 'Arial', sans-serif;
             background-color: #000000;
         }
 
-        /* Title Styling */
         .main-title {
             text-align: center;
             font-size: 2.8em;
@@ -37,7 +34,6 @@ def create_streamlit_app(llm, portfolio, clean_text):
             color: #4B5563;
         }
 
-        /* Container Styling */
         .stButton > button {
             background-color: #4B6A9B;
             color: white;
@@ -77,20 +73,48 @@ def create_streamlit_app(llm, portfolio, clean_text):
         unsafe_allow_html=True,
     )
 
-    # Create a container for the input form
-    with st.container():
-        st.markdown("### Step 1: Provide the Job URL")
-        url_input = st.text_input(
-            "Enter the career page or job URL below:",
-            value="https://impetus.openings.co/#!/job-view/ai-ml-engineer-2024080110424691",
-            help="Paste the link to the job posting or career page.",
-        )
-        submit_button = st.button("Fetch Job Details")
+    # User Details Form
+    st.markdown("### Step 1: Enter Your Details")
+    with st.form("user_details_form"):
+        name = st.text_input("Your Name", help="Enter your full name")
+        college = st.text_input("Your College", help="Enter the name of your college or university")
+        cgpa = st.text_input("Your CGPA", help="Enter your CGPA or grade")
+        phone = st.text_input("Your Phone Number", help="Enter your phone number")
+        email = st.text_input("Your Email Address", help="Enter your email address")
+        skills = st.text_area("Your Skills", help="List your skills, separated by commas")
+        projects = st.text_area("Your Projects", help="Briefly describe your projects")
+        technologies = st.text_area("Technologies Worked With", help="List technologies you're experienced with")
+        submit_user_details = st.form_submit_button("Save Details")
+
+    if submit_user_details:
+        try:
+            llm.set_user_details(
+                name=name,
+                college=college,
+                cgpa=cgpa,
+                phone=phone,
+                email=email,
+                skills=skills,
+                projects=projects,
+                technologies=technologies
+            )
+            st.success("User details saved successfully!")
+        except Exception as e:
+            st.error(f"An error occurred while saving user details: {e}")
+
+    # Job URL Input
+    st.markdown("### Step 2: Provide the Job URL")
+    url_input = st.text_input(
+        "Enter the career page or job URL below:",
+        value="https://impetus.openings.co/#!/job-view/ai-ml-engineer-2024080110424691",
+        help="Paste the link to the job posting or career page.",
+    )
+    submit_button = st.button("Fetch Job Details")
 
     # Display results after fetching
     if submit_button:
         with st.container():
-            st.markdown("### Step 2: Job Details & Generated Email")
+            st.markdown("### Step 3: Job Details & Generated Email")
             try:
                 # Process the input URL
                 with st.spinner("Extracting job details and generating the email..."):
