@@ -78,6 +78,8 @@ def create_streamlit_app(llm, portfolio, clean_text):
     with st.form("user_details_form"):
         name = st.text_input("Your Name", help="Enter your full name")
         college = st.text_input("Your College", help="Enter the name of your college or university")
+        degree = st.text_input("Your Degree", help="Enter the name of your degree")
+        specialization = st.text_input("Your Specialization", help ="Enter the name of your specialization")
         cgpa = st.text_input("Your CGPA", help="Enter your CGPA or grade")
         phone = st.text_input("Your Phone Number", help="Enter your phone number")
         email = st.text_input("Your Email Address", help="Enter your email address")
