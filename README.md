@@ -1,4 +1,4 @@
-# Email Generator Application
+# Cold Email Generator Application
 
 This Generative AI project simplifies the process of applying for jobs by generating tailored emails based on the content of job postings. With a simple link to the job opening, the application uses advanced AI technologies to create professional emails, saving users valuable time.
 
