@@ -6,7 +6,7 @@ This Generative AI project simplifies the process of applying for jobs by genera
 - **Automated Email Generation:** Input the link to a job posting, and the app generates a personalized email for the application.
 - **Customizable for Personal Use:** Users can update their portfolio, resume links, and project details to ensure the email reflects their unique profile.
 - **Powered by Cutting-Edge AI:** Utilizes LLaMA 3.1, LangChain, and GroqAPI for fast and accurate email generation.
-- **Local Data Integration:** Incorporates personal data stored in `my_portfolio.csv` using ChromaDB.
+- **Local Data Integration:** Incorporates personal data store in `my_portfolio.csv` using ChromaDB.
 - **Streamlit-based Interface:** Deployed as a user-friendly web application for easy accessibility.
 
 **Deployed link:** [Email Generator App](https://anushreesharma23-email-generator-appmain-ber2tk.streamlit.app/)
